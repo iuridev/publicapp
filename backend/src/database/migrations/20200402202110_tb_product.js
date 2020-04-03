@@ -12,7 +12,7 @@ exports.up = function(knex) {
 
 
     //relacionamento
-    table.integer('company_id').notNullable();
+    table.string('company_id').notNullable();
     table.foreign('company_id').references('id').inTable('company');
   })
 };
@@ -20,4 +20,3 @@ exports.up = function(knex) {
 exports.down = function(knex) {
   
 };
-//

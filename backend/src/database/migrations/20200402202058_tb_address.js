@@ -9,7 +9,7 @@ exports.up = function(knex) {
     table.string('cep').notNullable();
 
     //relacionamento
-    table.integer('company_id').notNullable();
+    table.string('company_id').notNullable();
     table.foreign('company_id').references('id').inTable('company');
   })
 };
@@ -17,5 +17,3 @@ exports.up = function(knex) {
 exports.down = function(knex) {
   return knex.schema.dropTable('address'); 
 };
-
-//
