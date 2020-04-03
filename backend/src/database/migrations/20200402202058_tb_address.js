@@ -6,6 +6,7 @@ exports.up = function(knex) {
     table.integer('number').nullable();
     table.string('neighborhood').notNullable();
     table.string('city').notNullable();
+    table.string('uf').notNullable();
     table.string('cep').notNullable();
 
     //relacionamento
