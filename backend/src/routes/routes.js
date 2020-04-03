@@ -7,6 +7,13 @@ routes.get('/', (request, response) => {
   return response.status(200).send('Backend Public!')
 })
 
+routes.get('/listCompany', async (request, response)=>{
+  const company = await connection('company').select('*');
+  
+  return response.json(company);
+})
+
+
 routes.post('/company', async (request, response)=>{
   const {name, cnpj, fone, whatsapp, email, password} = request.body;
   const id = crypto.randomBytes(4).toString('hex');
