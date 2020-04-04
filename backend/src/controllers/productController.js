@@ -23,5 +23,25 @@ module.exports = {
       company_id,
     });
     return response.json(item)    
+  },
+
+  async delete(request, response){
+    //usar parametro de rota params
+    const {id} = request.params;
+    const company_id = request.headers.authorization; // <-- id company
+
+    const product = await connection('product')
+    .where('id',id)
+    .select('company_id')
+    .first();
+
+    if(product.company_id != company_id){
+      return response.status(401).json({error: 'Operação não permitida.'});
+    }
+
+    await connection('product').where('id', id).delete();
+
+    return response.status(204).send();
   }
+
 };
