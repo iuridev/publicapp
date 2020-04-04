@@ -2,7 +2,15 @@ const connection = require('../database/connection')
 
 module.exports = {
   async index(request, response){
-    const address = await connection('address').select('*');
+    //usar query, são enviados pela url após o ?
+    const {page = 1} = request.query;
+    const company_id = request.headers.authorization; // <-- chave estrangeira
+
+    const address = await connection('address')
+    .where('company_id', company_id)
+    .limit(5)
+    .offset((page - 1)*5)
+    .select('*');
     return response.json(address)
   },
 
@@ -25,7 +33,7 @@ module.exports = {
   async delete(request, response){
     //usar parametro de rota params
     const {id} = request.params;
-    const company_id = request.headers.authorization; // <-- id company
+        const company_id = request.headers.authorization; // <-- id company
 
     const product = await connection('address')
     .where('id',id)

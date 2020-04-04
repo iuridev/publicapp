@@ -6,6 +6,8 @@ const connection = require('../database/connection');
 const companyController = require('../controllers/companyController');
 const addressController = require('../controllers/addressController');
 const productController = require('../controllers/productController');
+const profileProducts = require('../controllers/profileProducts');
+
 
 
 routes.get('/', (request, response) => {
@@ -16,6 +18,8 @@ routes.get('/', (request, response) => {
 routes.get('/listCompany', companyController.index); //lista empresas
 routes.get('/listAddress', addressController.index);//listar todos os endereços
 routes.get('/listProduct', productController.index);//listar todos os endereços
+routes.get('/listProfileProduct', profileProducts.index);//listar todos os endereços
+
 
 //post
 routes.post('/company', companyController.create); // cadastrar empresa
