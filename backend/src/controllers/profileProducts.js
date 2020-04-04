@@ -12,6 +12,12 @@ module.exports = {
     .offset((page - 1)*5)
     .select('*');
 
+    const [count] = await connection('product')
+    .where('company_id', company_id)
+    .count();
+
+    response.header('Total-de-itens', count['count(*)'])
+
     return response.json(product);
   }
 }
