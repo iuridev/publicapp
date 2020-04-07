@@ -15,9 +15,9 @@ routes.get('/', (request, response) => {
 })
 
 //get
-routes.get('/listCompany', companyController.index); //lista empresas
-routes.get('/listAddress', addressController.index);//listar todos os endereços
-routes.get('/listProduct', productController.index);//listar todos os endereços
+routes.get('/company', companyController.index); //lista empresas
+routes.get('/address', addressController.index);//listar todos os endereços
+routes.get('/product', productController.index);//listar todos os endereços
 routes.get('/listProfileProduct', profileProducts.index);//listar todos os endereços
 
 
