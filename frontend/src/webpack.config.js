@@ -14,12 +14,26 @@ module.exports = {
   module:{
     rules: [
       {
-        text: /\.js$/,
+        test: /\.js$/,
         exclude: /mode_modules/,
         use:{
           loader : 'babel-leader',
         }
-      }      
+      },
+      {
+        test: /\.css$/,
+        exclude: /mode_modules/,
+        use:[
+          {loader: 'style-loader'},
+          {loader: 'css-loader'},
+        ]
+      },      
+      {
+        test: /.*\.(gif|png|jge?g)$/i,
+        use: {
+          loader: 'file-loader',
+        }
+      }
     ]
   }
 };
