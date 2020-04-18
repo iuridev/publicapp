@@ -1,9 +1,9 @@
 const path = require('path');
 
 module.exports = {
-  entry: path.resolve(__dirname,'src','index.js'),
+  entry: path.resolve(__dirname,'index.js'),
   output: {
-    path: path.resolve(__dirname,'public','bundle.js'),
+    path: path.resolve(__dirname,'public'),
     filename: 'bundle.js'
   },
 
@@ -17,7 +17,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /mode_modules/,
         use:{
-          loader : 'babel-leader',
+          loader : 'babel-loader',
         }
       },
       {
